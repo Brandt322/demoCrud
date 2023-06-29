@@ -3,8 +3,10 @@ package com.example.demoCrud.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.Data;
 
 @Entity
+@Data
 public class Book {
     @Id
     @Column
@@ -17,4 +19,6 @@ public class Book {
     private String isbn;
     @Column
     private int yearPublication;
+    @Column
+    private String language;
 }

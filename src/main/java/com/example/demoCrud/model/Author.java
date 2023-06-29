@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Autor {
+public class Author {
     @Id
     @Column
     private Long id;
@@ -13,4 +13,8 @@ public class Autor {
     private String name;
     @Column
     private String lastname;
+    @Column
+    private int age;
+    @Column
+    private String country;
 }
