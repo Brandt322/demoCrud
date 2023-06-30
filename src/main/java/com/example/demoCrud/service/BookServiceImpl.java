@@ -3,9 +3,11 @@ package com.example.demoCrud.service;
 import com.example.demoCrud.model.Book;
 import com.example.demoCrud.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class BookServiceImpl implements BookService{
     @Autowired
     private BookRepository bookRepository;
