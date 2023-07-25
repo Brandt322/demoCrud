@@ -1,20 +1,20 @@
 package com.example.demoCrud.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
 public class Book {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
     @Column
     private String title;
-    @Column
-    private String author;
+    // Establecer la relación Many-to-One con la clase Author
+    @ManyToOne
+    @JoinColumn(name = "author_id") // Nombre de la columna que contendrá el ID del autor en la tabla "Book"
+    private Author author;
     @Column
     private String isbn;
     @Column

@@ -1,6 +1,8 @@
 package com.example.demoCrud.service;
 
+import com.example.demoCrud.model.Author;
 import com.example.demoCrud.model.Book;
+import com.example.demoCrud.repository.AuthorRepository;
 import com.example.demoCrud.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,7 @@ public class BookServiceImpl implements BookService{
             bookToEdit.get().setTitle(book.getTitle());
             bookToEdit.get().setLanguage(book.getLanguage());
             bookToEdit.get().setYearPublication(book.getYearPublication());
+
             return this.newBook(bookToEdit.get());
         }
         return null;

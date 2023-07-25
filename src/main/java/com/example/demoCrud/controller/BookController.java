@@ -26,8 +26,8 @@ public class BookController {
         return this.bookService.editBook(book);
     }
 
-    @PostMapping("/{id}")
-    public Boolean deleteBook(@RequestParam Long id) {
+    @PostMapping(value = "/delete/{id}")
+    public Boolean deleteBook(@PathVariable(value = "id") Long id) {
         return this.bookService.deleteBook(id);
     }
 }
