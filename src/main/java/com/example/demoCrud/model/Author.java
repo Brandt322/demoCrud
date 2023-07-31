@@ -1,25 +1,48 @@
 package com.example.demoCrud.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Data;
-
+import lombok.Getter;
+import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Data
+@Table(name = "author")
+@Getter
+@Setter
 public class Author {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
-    @Column
+
+    @Column(name = "name")
     private String name;
-    @Column
+
+    @Column(name = "lastname")
     private String lastname;
-    @Column
+
+    @Column(name = "age")
     private int age;
-    @Column
+
+    @Column(name = "country")
     private String country;
+
+
     // Establecer la relación One-to-Many con la clase Book
-    @OneToMany(mappedBy = "author") // "author" debe coincidir con el nombre del atributo en la clase Book que representa al autor
+    @OneToMany(mappedBy = "author")
     private List<Book> books;
+
+    public Author() {
+
+    }
+    public Author(Long id, String name, String lastname, int age, String country, List<Book> books) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.age = age;
+        this.country = country;
+        this.books = books;
+    }
 }

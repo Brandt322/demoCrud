@@ -1,8 +1,6 @@
 package com.example.demoCrud.service;
 
-import com.example.demoCrud.model.Author;
 import com.example.demoCrud.model.Book;
-import com.example.demoCrud.repository.AuthorRepository;
 import com.example.demoCrud.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,18 +24,23 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Book editBook(Book book) {
-        Optional<Book> bookToEdit= this.bookRepository.findById(book.getId());
-        if(bookToEdit.get() != null) {
-            bookToEdit.get().setAuthor(book.getAuthor());
-            bookToEdit.get().setIsbn(book.getIsbn());
-            bookToEdit.get().setTitle(book.getTitle());
-            bookToEdit.get().setLanguage(book.getLanguage());
-            bookToEdit.get().setYearPublication(book.getYearPublication());
+        Optional<Book> bookToEdit = this.bookRepository.findById(book.getId());
+        if (bookToEdit.get() != null) {
+            Book bookToEditEntity = bookToEdit.get();
+            bookToEditEntity.setTitle(book.getTitle());
+            bookToEditEntity.setIsbn(book.getIsbn());
+            bookToEditEntity.setYearPublication(book.getYearPublication());
+            bookToEditEntity.setLanguage(book.getLanguage());
 
-            return this.newBook(bookToEdit.get());
+            bookToEditEntity.setAuthor(book.getAuthor());
+
+            bookToEditEntity.setPublisher(book.getPublisher());
+            System.out.println("consola:" + book.getPublisher() + "--" + book.getAuthor());
+            return this.newBook(bookToEditEntity);
         }
         return null;
     }
+
 
     @Override
     public Boolean deleteBook(Long id) {

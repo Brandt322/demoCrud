@@ -5,10 +5,12 @@ import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
-
+ /*
 @Data
 @Entity
+*/
 public class Category {
+    /*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -18,5 +20,5 @@ public class Category {
     private String name;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Book> books = new HashSet<>();
+    private Set<Book> books = new HashSet<>();*/
 }

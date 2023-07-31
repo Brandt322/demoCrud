@@ -1,21 +1,35 @@
 package com.example.demoCrud.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
-@Data
+
 @Entity
+@Table(name = "publisher")
+@Getter
+@Setter
 public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
+    // Establecer la relación One-to-Many con la clase Book
     @OneToMany(mappedBy = "publisher")
-    private List<Book> books = new ArrayList<>();
+    private List<Book> books;
+
+    public Publisher() {
+
+    }
+
+    public Publisher(Long id, String name, List<Book> books) {
+        this.id = id;
+        this.name = name;
+        this.books = books;
+    }
 }
